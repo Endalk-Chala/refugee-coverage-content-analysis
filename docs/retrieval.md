@@ -62,5 +62,17 @@ Run `python scripts/build_retrieval_log.py` for current counts. At 31 October 20
 67,700 body words, of which 69 are in-window (36 Afrikaner, 33 PARRIS); by outlet, AP 18, Fox News 16, MPR News 12,
 NPR 10, MSNBC 8, Sahan Journal 8, Reuters 2, MinnPost 2. Four MSNBC opinion pieces dated 2026 on the Afrikaner
 program were retrieved before the window check and are held out of the coded sample. Still to obtain through
-library databases: Washington Post (17 candidates), Star Tribune (10), CNN (12), Reuters (5 in-window), and the
-New York Times.
+library databases: Washington Post, Star Tribune, CNN, Reuters (5 in-window) and the New York Times.
+
+### Paywalled and blocked outlets: headline log (31 October 2026, third pass)
+
+Full text of elite national and regional outlets behind paywalls or access blocks was not collected, but
+every candidate item found was logged with headline, URL, date (from the URL where present) and a screen
+note, using `scripts/log_headlines.py` (status `paywalled; headline logged; library route`, or
+`blocked (legal-reasons page); ...` for CNN). Discovery used DuckDuckGo `site:` queries on both cases plus
+the URLs already in the candidate workbook. Counts in `search_candidates.csv`: New York Times 21, Washington
+Post 28, Star Tribune 22, CNN 12, Wall Street Journal 6. Items flagged "broader crackdown" cover Operation
+Metro Surge generally and are kept only if the retrieved text addresses the refugee re-examination
+(Operation PARRIS); items flagged "likely exclude" (TPS litigation, an arts review, a video clip) are logged
+for completeness. Dates for Star Tribune and WSJ items, which do not carry dates in their URLs, are to be
+confirmed from the database record.

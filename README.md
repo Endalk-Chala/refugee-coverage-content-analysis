@@ -65,6 +65,7 @@ refugee-coverage-content-analysis/
 │   ├── analysis.py               cross-tabulations, effect sizes, logistic models
 │   ├── build_workbook.py         regenerates the coding workbook from vars.py
 │   ├── add_candidates.py         logs discovery-search hits to search_candidates.csv
+│   ├── log_headlines.py          logs headline + URL for paywalled/blocked outlets (library route)
 │   ├── place_all.py              names and files saved article texts, strips boilerplate
 │   ├── build_retrieval_log.py    regenerates retrieval_log.csv from file headers
 │   └── fetch_fulltext.py         direct HTTP fetcher for open-access outlets
@@ -86,7 +87,10 @@ As of 31 October 2026 the corpus holds 76 full-text items (about 67,700 words), 
 within the recorded windows (36 Afrikaner, 33 PARRIS), from AP, Fox News, MPR News, NPR, MSNBC,
 Sahan Journal, Reuters and MinnPost. Items from paywalled outlets (The Washington Post, Star
 Tribune, The New York Times) and from outlets that block automated access (CNN, most of Reuters)
-are to be retrieved through library databases; the candidate list identifies each by URL. `docs/retrieval.md` records the procedure and every limit encountered, so that the
+are to be retrieved through library databases. For these outlets the headline, URL and date of every
+candidate found (89 items across The New York Times, The Washington Post, The Wall Street Journal,
+CNN and the Star Tribune) are logged in `data/output/search_candidates.csv` so that the library pull
+can be matched item by item. `docs/retrieval.md` records the procedure and every limit encountered, so that the
 corpus can be rebuilt and checked against the logged word counts.
 
 Article texts are not distributed in this repository. They are the copyright of their
