@@ -82,12 +82,11 @@ the workbook rebuilt with `scripts/build_workbook.py`.
 
 ## Corpus status
 
-As of 31 October 2026 the corpus holds 42 full-text items (about 37,800 words) from MPR News,
-Sahan Journal, Fox News, MSNBC, MinnPost, NPR and Reuters, all within the recorded windows.
-A further 64 candidates have been logged from site-restricted searches, 44 of them
-open-access and pending retrieval; items from paywalled outlets (The Washington Post, Star
-Tribune) and from outlets that block automated access are to be retrieved through library
-databases. `docs/retrieval.md` records the procedure and every limit encountered, so that the
+As of 31 October 2026 the corpus holds 76 full-text items (about 67,700 words), 69 of them
+within the recorded windows (36 Afrikaner, 33 PARRIS), from AP, Fox News, MPR News, NPR, MSNBC,
+Sahan Journal, Reuters and MinnPost. Items from paywalled outlets (The Washington Post, Star
+Tribune, The New York Times) and from outlets that block automated access (CNN, most of Reuters)
+are to be retrieved through library databases; the candidate list identifies each by URL. `docs/retrieval.md` records the procedure and every limit encountered, so that the
 corpus can be rebuilt and checked against the logged word counts.
 
 Article texts are not distributed in this repository. They are the copyright of their

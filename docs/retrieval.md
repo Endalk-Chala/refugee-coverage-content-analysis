@@ -41,8 +41,9 @@ with recorded date, page-confirmed date, word count and window flag. Run it afte
   from a licensed database.
 - **Washington Post** and **Star Tribune** are paywalled; headlines were logged for completeness and the texts are
   to be pulled through a library database (Nexis Uni or ProQuest).
-- **Reuters** rate-limited automated access after six page loads on 31 October 2026; the remaining items are
-  marked `pending` in the discovery list.
+- **Reuters** blocks automated access after a handful of page loads ("Access is temporarily restricted"), on
+  31 October 2026 and again the following morning; two Reuters items were retrieved and the remaining in-window
+  items are marked for the library route.
 - **MSNBC** URLs now redirect to `ms.now` (the outlet rebranded); both hosts are treated as one outlet.
 - **NYT, AP (national-desk pieces not surfaced by search), Reuters remainder**: database route.
 
@@ -57,5 +58,9 @@ with recorded date, page-confirmed date, word count and window flag. Run it afte
 
 ## Status at last update
 
-Run `python scripts/build_retrieval_log.py` for current counts. At 31 October 2026: 42 files, about 37,800 body
-words; 64 further candidates logged, 44 of them open-access and pending retrieval.
+Run `python scripts/build_retrieval_log.py` for current counts. At 31 October 2026 (second pass): 76 files, about
+67,700 body words, of which 69 are in-window (36 Afrikaner, 33 PARRIS); by outlet, AP 18, Fox News 16, MPR News 12,
+NPR 10, MSNBC 8, Sahan Journal 8, Reuters 2, MinnPost 2. Four MSNBC opinion pieces dated 2026 on the Afrikaner
+program were retrieved before the window check and are held out of the coded sample. Still to obtain through
+library databases: Washington Post (17 candidates), Star Tribune (10), CNN (12), Reuters (5 in-window), and the
+New York Times.
