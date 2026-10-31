@@ -1,0 +1,8 @@
+# Retrieved article texts are copyrighted; the repository ships the retrieval log and the scripts that regenerate them.
+data/fulltext/*.txt
+data/_to_delete/
+data/output/todo_open_access.json
+*.tmp
+__pycache__/
+.DS_Store
+Thumbs.db
