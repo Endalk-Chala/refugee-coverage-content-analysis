@@ -1,7 +1,7 @@
-# Asymmetrical Refugee Legitimation
+# Refugee Coverage: A Comparative Content Analysis
 
-**Race, media framing, and the unequal production of refugee credibility in the
-United States**
+**How U.S. national, wire, partisan and Minnesota news outlets covered two refugee
+policy cases, 2025 to 2026: the Afrikaner resettlement program and Operation PARRIS**
 
 Endalkachew H. Chala, PhD
 Community Fellow, Center for an Informed Public, University of Washington
@@ -10,10 +10,19 @@ Research infrastructure, version 0.2, 31 October 2026.
 
 ---
 
+## Research question
+
+The study asks whether, and how, news coverage of the two cases differed in sourcing,
+individualisation, attribution of credibility and the framing of refugee status, across
+four outlet tiers. The design is comparative: the same codebook is applied to both cases,
+coding is blind to the hypotheses where the instrument allows it, and the analysis reports
+cross-tabulations and effect sizes before any interpretive claim. The theoretical framing
+that motivates the comparison is set out in the paper, not here.
+
 ## What is here
 
 ```
-asymmetrical_refugee_legitimation/
+refugee-coverage-content-analysis/
 ├── README.md                     this file
 ├── arl_coding_workbook.xlsx      register, coding sheet, codebook, value lists
 ├── docs/
