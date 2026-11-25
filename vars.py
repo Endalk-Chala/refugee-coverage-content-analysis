@@ -23,6 +23,83 @@ REGISTER = [
     ("cda_rationale", "Why this text was selected: typical case, extreme case, hinge moment, deviant case."),
 ]
 
+# ---------------------------------------------------------------------------
+# Deservingness criteria (CARIN): Control, Attitude, Reciprocity, Identity, Need.
+# Added 24 November 2026 (codebook v0.2). The criteria follow van Oorschot (2000, 2006)
+# and their use in news content analysis by De Coninck and Steeman (2026, Journalism &
+# Mass Communication Quarterly). Three variables per criterion: whether it is present,
+# which way it points, and who voices it.
+CARIN_NOTE = (
+    "Each criterion is a ground on which a group can be judged more or less deserving of "
+    "protection. Code the criterion as present when the item says something that bears on "
+    "that ground for the refugee population the item is about, whether in the outlet's own "
+    "voice or in a quoted source's. A word on its own is not enough: 'legal' in 'legal "
+    "challenge' is not a Control judgement. Direction is always coded from the standpoint of "
+    "the population's claim to protection: favourable supports the claim, unfavourable "
+    "undercuts it. Voice records who makes the judgement, so that an official's accusation "
+    "reported by a journalist is not counted as the journalist's own."
+)
+
+_CARIN = [
+    ("control", "Control",
+     "Is the population presented as responsible for its own situation or for a breach of the rules?",
+     "Favourable: not to blame, lawfully admitted, already vetted, followed the rules, fled for "
+     "reasons outside their control. Unfavourable: fraud, misrepresentation, unlawful presence, "
+     "improper admission, a need for re-vetting, criminality."),
+    ("attitude", "Attitude",
+     "Is the population presented as grateful, compliant and willing to fit in, or the reverse?",
+     "Favourable: gratitude, respect for the law, cooperation with authorities, effort to learn "
+     "English or to integrate. Unfavourable: ingratitude, refusal, hostility, defiance."),
+    ("reciprocity", "Reciprocity",
+     "Is the population presented as contributing in return, or as taking without giving?",
+     "Favourable: work, skills, farming, business ownership, taxes paid, service to the community. "
+     "Unfavourable: cost to taxpayers, reliance on benefits, misuse of public programmes."),
+    ("identity", "Identity",
+     "Is the population presented as culturally close to, or distant from, the receiving society?",
+     "Favourable: shared values, language, faith or way of life; 'neighbours'; belonging to the "
+     "community. Unfavourable: cultural distance, incompatibility, foreignness, failure to "
+     "assimilate. Naming a group's race, ethnicity or religion as a fact is not by itself a "
+     "judgement: code present only when the item uses it to mark closeness or distance."),
+    ("need", "Need",
+     "Is the population presented as facing persecution, danger or hardship that calls for protection?",
+     "Favourable: persecution, violence, vulnerability or hardship treated as real. Unfavourable: "
+     "the claim of persecution or danger is questioned, described as unsupported, or denied."),
+]
+
+def _carin_variables():
+    out = []
+    for key, label, question, guide in _CARIN:
+        out.append(dict(
+            name=f"carin_{key}_present", tier="core", lom="nominal",
+            question=f"{label}: {question}",
+            rule=guide + " Code yes if any such judgement appears anywhere in the item.",
+            values=[("yes", "At least one judgement on this ground."),
+                    ("no", "None.")]))
+        out.append(dict(
+            name=f"carin_{key}_direction", tier="core", lom="nominal",
+            question=f"{label}: which way do the judgements point for the population's claim to protection?",
+            rule="Leave blank where the criterion is absent. Use mixed only when favourable and "
+                 "unfavourable judgements are given comparable weight, not when one is briefly "
+                 "acknowledged.",
+            values=[("favourable", "Supports the population's claim."),
+                    ("unfavourable", "Undercuts the population's claim."),
+                    ("mixed", "Both, with comparable weight.")]))
+        out.append(dict(
+            name=f"carin_{key}_voice", tier="core", lom="nominal",
+            question=f"{label}: who makes the judgement?",
+            rule="Leave blank where the criterion is absent. Code the voice that carries the "
+                 "judgement coded under direction. Journalist means the outlet's own voice, with "
+                 "no attribution. Use multiple only when two kinds of voice carry it equally.",
+            values=[("official", "Government or law enforcement, at any level."),
+                    ("journalist", "The outlet's own voice, unattributed."),
+                    ("refugee", "A member of the affected population or their family."),
+                    ("advocate_legal", "An advocacy organisation, lawyer or court filing for the population."),
+                    ("other_source", "Any other quoted source, including experts and politicians out of office."),
+                    ("multiple", "Two kinds of voice carry it equally.")]))
+    return out
+
+CARIN_VARIABLES = _carin_variables()
+
 VARIABLES = [
     dict(name="problem_definition", tier="core", lom="nominal",
          question="What does the item present as the problem to be understood or solved?",
@@ -158,9 +235,12 @@ VARIABLES = [
          values=[("0", "Absent."), ("1", "Descriptive: race or ethnicity named as a fact."),
                  ("2", "Contested: someone in the item alleges racial motivation and is quoted."),
                  ("3", "Central: the item's own frame is about racial differential treatment.")]),
-    dict(name="tone_refugee", tier="core", lom="ordinal",
+    *CARIN_VARIABLES,
+    dict(name="tone_refugee", tier="extended", lom="ordinal",
          question="Overall valence toward the refugee population.",
-         rule="Toward the people, not the policy. Judge the item as a whole.",
+         rule="Toward the people, not the policy. Judge the item as a whole. Moved to the extended "
+              "set in v0.2: the five deservingness criteria now carry this judgement in a form that "
+              "can be read off the text.",
          values=[("-2", "Strongly negative."), ("-1", "Negative."), ("0", "Neutral or balanced."),
                  ("1", "Positive."), ("2", "Strongly positive.")]),
     dict(name="tone_policy", tier="core", lom="ordinal",
@@ -190,3 +270,19 @@ ADMIN = [
     ("flag_adjudication", "yes | no. Anything you had to decide rather than read off."),
     ("coder_notes", "Free text. The reason for a hard call, in a sentence."),
 ]
+
+# ---------------------------------------------------------------------------
+# Reliability design (v0.2). Printed at the end of the codebook.
+RELIABILITY_DESIGN = (
+    "Two human coders, each working without sight of the other's codes or of any earlier "
+    "coding. Training uses ten items that are not in the reliability sample; the codebook is "
+    "revised once after training and then frozen. The reliability sample is a random draw, "
+    "stratified by case and outlet category, of 30 per cent of the in-sample items or 50 items, "
+    "whichever is larger. Krippendorff's alpha is reported for every variable used in a claim, "
+    "at the level of measurement recorded in `variable_meta`, and every run is logged in "
+    "`reliability_log`. Disagreements are resolved by discussion after the alpha is computed, "
+    "and the resolved codes are the data of record for those items. If an automated or "
+    "AI-assisted step is used at any point (relevance screening, a dictionary measure, an "
+    "additional coder), the methods section names the tool, its purpose and its agreement with "
+    "the human codes, as the AEJMC policy on the ethical use of AI requires."
+)
