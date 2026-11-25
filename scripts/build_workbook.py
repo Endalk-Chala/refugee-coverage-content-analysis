@@ -64,9 +64,9 @@ ws.column_dimensions["A"].width = 26
 ws.column_dimensions["B"].width = 104
 rows = [
     ("Asymmetrical Refugee Legitimation", None),
-    ("Coding workbook, version 0.1. Solo-coded.", None),
+    ("Coding workbook, version 0.2. Two human coders; see the codebook, Reliability design.", None),
     ("Author", "Endalkachew H. Chala, Community Fellow, Center for an Informed Public, University of Washington"),
-    ("Built", "23 September 2026"),
+    ("Built", "24 November 2026 (v0.1: 23 September 2026)"),
     (None, None),
     ("The design in one line",
      "Explanatory sequential mixed methods: a manual content analysis of roughly 100 to 160 news "
