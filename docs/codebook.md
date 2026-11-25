@@ -2,7 +2,7 @@
 
 ## Asymmetrical Refugee Legitimation
 
-Version 0.1, 23 September 2026. Generated from `vars.py`; edit there, not here.
+Version 0.2, 24 November 2026. Generated from `vars.py`; edit there, not here.
 
 The unit of analysis is the news item. One row per in-sample item in the `coding` sheet, one row per retrieved item in `register`.
 
@@ -41,7 +41,7 @@ Two further fields: `coding_order`, a random number used to shuffle the corpus b
 
 ## Coded variables
 
-17 core and 6 extended. Core variables are required by the research questions. If time is short, drop the extended set before shrinking the corpus.
+31 core (16 general and 15 on the deservingness criteria) and 7 extended. Core variables are required by the research questions. If time is short, drop the extended set before shrinking the corpus.
 
 ## Core variables
 
@@ -276,22 +276,6 @@ Explicit only. The paper's claim is that race works through the other variables;
 | `2` | Contested: someone in the item alleges racial motivation and is quoted. |
 | `3` | Central: the item's own frame is about racial differential treatment. |
 
-### `tone_refugee`
-
-**Overall valence toward the refugee population.**
-
-Level of measurement: ordinal.
-
-Toward the people, not the policy. Judge the item as a whole.
-
-| code | meaning |
-|---|---|
-| `-2` | Strongly negative. |
-| `-1` | Negative. |
-| `0` | Neutral or balanced. |
-| `1` | Positive. |
-| `2` | Strongly positive. |
-
 ### `tone_policy`
 
 **Overall valence toward the government action.**
@@ -307,6 +291,232 @@ Coded separately and deliberately: an item can be warm toward people and warm to
 | `0` | Neutral or balanced. |
 | `1` | Positive. |
 | `2` | Strongly positive. |
+
+## Deservingness criteria (CARIN)
+
+Each criterion is a ground on which a group can be judged more or less deserving of protection. Code the criterion as present when the item says something that bears on that ground for the refugee population the item is about, whether in the outlet's own voice or in a quoted source's. A word on its own is not enough: 'legal' in 'legal challenge' is not a Control judgement. Direction is always coded from the standpoint of the population's claim to protection: favourable supports the claim, unfavourable undercuts it. Voice records who makes the judgement, so that an official's accusation reported by a journalist is not counted as the journalist's own.
+
+Three variables per criterion: present, direction and voice. The criteria follow van Oorschot (2000, 2006); their application to news content follows De Coninck and Steeman (2026).
+
+### `carin_control_present`
+
+**Control: Is the population presented as responsible for its own situation or for a breach of the rules?**
+
+Level of measurement: nominal.
+
+Favourable: not to blame, lawfully admitted, already vetted, followed the rules, fled for reasons outside their control. Unfavourable: fraud, misrepresentation, unlawful presence, improper admission, a need for re-vetting, criminality. Code yes if any such judgement appears anywhere in the item.
+
+| code | meaning |
+|---|---|
+| `yes` | At least one judgement on this ground. |
+| `no` | None. |
+
+### `carin_control_direction`
+
+**Control: which way do the judgements point for the population's claim to protection?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Use mixed only when favourable and unfavourable judgements are given comparable weight, not when one is briefly acknowledged.
+
+| code | meaning |
+|---|---|
+| `favourable` | Supports the population's claim. |
+| `unfavourable` | Undercuts the population's claim. |
+| `mixed` | Both, with comparable weight. |
+
+### `carin_control_voice`
+
+**Control: who makes the judgement?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Code the voice that carries the judgement coded under direction. Journalist means the outlet's own voice, with no attribution. Use multiple only when two kinds of voice carry it equally.
+
+| code | meaning |
+|---|---|
+| `official` | Government or law enforcement, at any level. |
+| `journalist` | The outlet's own voice, unattributed. |
+| `refugee` | A member of the affected population or their family. |
+| `advocate_legal` | An advocacy organisation, lawyer or court filing for the population. |
+| `other_source` | Any other quoted source, including experts and politicians out of office. |
+| `multiple` | Two kinds of voice carry it equally. |
+
+### `carin_attitude_present`
+
+**Attitude: Is the population presented as grateful, compliant and willing to fit in, or the reverse?**
+
+Level of measurement: nominal.
+
+Favourable: gratitude, respect for the law, cooperation with authorities, effort to learn English or to integrate. Unfavourable: ingratitude, refusal, hostility, defiance. Code yes if any such judgement appears anywhere in the item.
+
+| code | meaning |
+|---|---|
+| `yes` | At least one judgement on this ground. |
+| `no` | None. |
+
+### `carin_attitude_direction`
+
+**Attitude: which way do the judgements point for the population's claim to protection?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Use mixed only when favourable and unfavourable judgements are given comparable weight, not when one is briefly acknowledged.
+
+| code | meaning |
+|---|---|
+| `favourable` | Supports the population's claim. |
+| `unfavourable` | Undercuts the population's claim. |
+| `mixed` | Both, with comparable weight. |
+
+### `carin_attitude_voice`
+
+**Attitude: who makes the judgement?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Code the voice that carries the judgement coded under direction. Journalist means the outlet's own voice, with no attribution. Use multiple only when two kinds of voice carry it equally.
+
+| code | meaning |
+|---|---|
+| `official` | Government or law enforcement, at any level. |
+| `journalist` | The outlet's own voice, unattributed. |
+| `refugee` | A member of the affected population or their family. |
+| `advocate_legal` | An advocacy organisation, lawyer or court filing for the population. |
+| `other_source` | Any other quoted source, including experts and politicians out of office. |
+| `multiple` | Two kinds of voice carry it equally. |
+
+### `carin_reciprocity_present`
+
+**Reciprocity: Is the population presented as contributing in return, or as taking without giving?**
+
+Level of measurement: nominal.
+
+Favourable: work, skills, farming, business ownership, taxes paid, service to the community. Unfavourable: cost to taxpayers, reliance on benefits, misuse of public programmes. Code yes if any such judgement appears anywhere in the item.
+
+| code | meaning |
+|---|---|
+| `yes` | At least one judgement on this ground. |
+| `no` | None. |
+
+### `carin_reciprocity_direction`
+
+**Reciprocity: which way do the judgements point for the population's claim to protection?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Use mixed only when favourable and unfavourable judgements are given comparable weight, not when one is briefly acknowledged.
+
+| code | meaning |
+|---|---|
+| `favourable` | Supports the population's claim. |
+| `unfavourable` | Undercuts the population's claim. |
+| `mixed` | Both, with comparable weight. |
+
+### `carin_reciprocity_voice`
+
+**Reciprocity: who makes the judgement?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Code the voice that carries the judgement coded under direction. Journalist means the outlet's own voice, with no attribution. Use multiple only when two kinds of voice carry it equally.
+
+| code | meaning |
+|---|---|
+| `official` | Government or law enforcement, at any level. |
+| `journalist` | The outlet's own voice, unattributed. |
+| `refugee` | A member of the affected population or their family. |
+| `advocate_legal` | An advocacy organisation, lawyer or court filing for the population. |
+| `other_source` | Any other quoted source, including experts and politicians out of office. |
+| `multiple` | Two kinds of voice carry it equally. |
+
+### `carin_identity_present`
+
+**Identity: Is the population presented as culturally close to, or distant from, the receiving society?**
+
+Level of measurement: nominal.
+
+Favourable: shared values, language, faith or way of life; 'neighbours'; belonging to the community. Unfavourable: cultural distance, incompatibility, foreignness, failure to assimilate. Naming a group's race, ethnicity or religion as a fact is not by itself a judgement: code present only when the item uses it to mark closeness or distance. Code yes if any such judgement appears anywhere in the item.
+
+| code | meaning |
+|---|---|
+| `yes` | At least one judgement on this ground. |
+| `no` | None. |
+
+### `carin_identity_direction`
+
+**Identity: which way do the judgements point for the population's claim to protection?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Use mixed only when favourable and unfavourable judgements are given comparable weight, not when one is briefly acknowledged.
+
+| code | meaning |
+|---|---|
+| `favourable` | Supports the population's claim. |
+| `unfavourable` | Undercuts the population's claim. |
+| `mixed` | Both, with comparable weight. |
+
+### `carin_identity_voice`
+
+**Identity: who makes the judgement?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Code the voice that carries the judgement coded under direction. Journalist means the outlet's own voice, with no attribution. Use multiple only when two kinds of voice carry it equally.
+
+| code | meaning |
+|---|---|
+| `official` | Government or law enforcement, at any level. |
+| `journalist` | The outlet's own voice, unattributed. |
+| `refugee` | A member of the affected population or their family. |
+| `advocate_legal` | An advocacy organisation, lawyer or court filing for the population. |
+| `other_source` | Any other quoted source, including experts and politicians out of office. |
+| `multiple` | Two kinds of voice carry it equally. |
+
+### `carin_need_present`
+
+**Need: Is the population presented as facing persecution, danger or hardship that calls for protection?**
+
+Level of measurement: nominal.
+
+Favourable: persecution, violence, vulnerability or hardship treated as real. Unfavourable: the claim of persecution or danger is questioned, described as unsupported, or denied. Code yes if any such judgement appears anywhere in the item.
+
+| code | meaning |
+|---|---|
+| `yes` | At least one judgement on this ground. |
+| `no` | None. |
+
+### `carin_need_direction`
+
+**Need: which way do the judgements point for the population's claim to protection?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Use mixed only when favourable and unfavourable judgements are given comparable weight, not when one is briefly acknowledged.
+
+| code | meaning |
+|---|---|
+| `favourable` | Supports the population's claim. |
+| `unfavourable` | Undercuts the population's claim. |
+| `mixed` | Both, with comparable weight. |
+
+### `carin_need_voice`
+
+**Need: who makes the judgement?**
+
+Level of measurement: nominal.
+
+Leave blank where the criterion is absent. Code the voice that carries the judgement coded under direction. Journalist means the outlet's own voice, with no attribution. Use multiple only when two kinds of voice carry it equally.
+
+| code | meaning |
+|---|---|
+| `official` | Government or law enforcement, at any level. |
+| `journalist` | The outlet's own voice, unattributed. |
+| `refugee` | A member of the affected population or their family. |
+| `advocate_legal` | An advocacy organisation, lawyer or court filing for the population. |
+| `other_source` | Any other quoted source, including experts and politicians out of office. |
+| `multiple` | Two kinds of voice carry it equally. |
 
 ## Extended variables
 
@@ -344,6 +554,22 @@ Separate from treatment: an outlet can counter-source without concluding anythin
 | `yes` |  |
 | `no` |  |
 | `na` | No official claim present. |
+
+### `tone_refugee`
+
+**Overall valence toward the refugee population.**
+
+Level of measurement: ordinal.
+
+Toward the people, not the policy. Judge the item as a whole. Moved to the extended set in v0.2: the five deservingness criteria now carry this judgement in a form that can be read off the text.
+
+| code | meaning |
+|---|---|
+| `-2` | Strongly negative. |
+| `-1` | Negative. |
+| `0` | Neutral or balanced. |
+| `1` | Positive. |
+| `2` | Strongly positive. |
 
 ### `numeric_claims_present`
 
@@ -408,3 +634,7 @@ The `lom` column in `variable_meta` is not documentation, it is an input. Krippe
 ## Thresholds
 
 Alpha of 0.800 is the customary threshold for firm conclusions; 0.667 is the lowest conventionally reportable, and only for tentative ones. A variable below threshold is almost always a definition problem rather than a coding problem: rewrite the rule, rebuild the workbook, re-code the subsample, and log both runs in `reliability_log`. Reporting only the second run is the thing reviewers catch.
+
+## Reliability design
+
+Two human coders, each working without sight of the other's codes or of any earlier coding. Training uses ten items that are not in the reliability sample; the codebook is revised once after training and then frozen. The reliability sample is a random draw, stratified by case and outlet category, of 30 per cent of the in-sample items or 50 items, whichever is larger. Krippendorff's alpha is reported for every variable used in a claim, at the level of measurement recorded in `variable_meta`, and every run is logged in `reliability_log`. Disagreements are resolved by discussion after the alpha is computed, and the resolved codes are the data of record for those items. If an automated or AI-assisted step is used at any point (relevance screening, a dictionary measure, an additional coder), the methods section names the tool, its purpose and its agreement with the human codes, as the AEJMC policy on the ethical use of AI requires.
